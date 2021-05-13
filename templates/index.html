@@ -1,0 +1,43 @@
+{% block content %}
+{% include "header.html" %}
+
+<div class="todo-lists">
+    <h1 class="title">All your todos!</h1>
+    <div class="cards-container">
+        <div class="row">
+        {% for table in tables %}
+            <div class="col-lg-4 col-sm-6">
+                <div class="card cards">
+                    <div class="card-header">
+                        <h4>{{table.title}}
+                            <a href="{{ url_for('edit', name='Table', name_id=table.id) }}" class="btn btn-primary btn-sm">
+                                <i class="fas fa-pen-alt"></i>
+                            </a>
+                            <a href="{{ url_for('delete', name='Table', name_id=table.id) }}" class="btn btn-danger btn-sm">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                    <a href="{{ url_for('my_todos', table_id=table.id) }}" class="btn btn-primary btn-lg">Go</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+            <div class="col-lg-4 col-sm-6">
+                <div class="card cards">
+                    <div class="card-header"><h4>New table</h4></div>
+                    <div class="card-body">
+                        <a href="{{ url_for('add', name='Table', id_parent=0) }}" class="btn btn-primary btn-lg">
+                            Add <i class="fas fa-plus-circle"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+{% endblock %}

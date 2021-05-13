@@ -1,0 +1,56 @@
+{% block content %}
+{% include "header.html" %}
+
+<h1 class="title">{{table.title}}</h1>
+<div class="cards-container">
+    <div class="row">
+        {% for list in table.todo_lists %}
+        <div class="col-lg-4 col-sm-6">
+            <div class="card cards">
+                <div class="card-header">
+                    <h4>{{list.title}}
+                        <a href="{{ url_for('edit', name='TodoList', name_id=list.id) }}" class="btn btn-primary btn-sm">
+                            <i class="fas fa-pen-alt"></i>
+                        </a>
+                        <a href="{{ url_for('delete', name='TodoList', name_id=list.id) }}" class="btn btn-danger btn-sm">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </h4>
+                </div>
+                <div class="card-body">
+                    {% for task in list.tasks %}
+                    <div class="form-check">
+                        <p class="tasks">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                {{ task.task }}
+                                <a href="{{ url_for('edit', name='Task', name_id=task.id) }}" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-pen-alt"></i>
+                                </a>
+                                <a href="{{ url_for('delete', name='Task', name_id=task.id) }}" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-times"></i>
+                                </a>
+                            </label>
+                        </p>
+                    </div>
+                    {% endfor %}
+                    <a href="{{ url_for('add', name='Task', id_parent=list.id) }}" class="btn btn-primary btn-lg">New task <i class="fas fa-plus-circle"></i></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="col-lg-4 col-sm-6">
+                <div class="card cards">
+                    <div class="card-header"><h4>New table</h4></div>
+                    <div class="card-body">
+                        <a href="{{ url_for('add', name='TodoList', id_parent=table.id) }}" class="btn btn-primary btn-lg">
+                            Add <i class="fas fa-plus-circle"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}
