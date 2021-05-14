@@ -8,7 +8,7 @@ import os
 
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = os.environ.get("key")
+app.config["SECRET_KEY"] = os.environ.get("ULTRA_SECRET_KEY")
 Bootstrap(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL1", "sqlite:///todos.db")

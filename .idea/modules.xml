@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$USER_HOME$/Desktop/blog-with-users/.idea/blog-with-users.iml" filepath="$USER_HOME$/Desktop/blog-with-users/.idea/blog-with-users.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/todo-list.iml" filepath="$PROJECT_DIR$/.idea/todo-list.iml" />
     </modules>
   </component>
