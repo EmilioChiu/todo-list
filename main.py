@@ -8,10 +8,10 @@ import os
 
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
+app.config["SECRET_KEY"] = "asdfjhfoiaASS"
 Bootstrap(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///todos.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -38,6 +38,7 @@ class Task(db.Model):
     task = db.Column(db.String(150), nullable=False)
     list_id = db.Column(db.Integer, db.ForeignKey("todo_list.id"))
     todo_list = db.relationship("TodoList", back_populates="tasks")
+db.create_all()
 
 
 class NewForm(FlaskForm):
