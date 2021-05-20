@@ -1,3 +1,1 @@
 web: gunicorn main:app
-host all all      ::1/128      md5
-host all postgres 127.0.0.1/32 md5
