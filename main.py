@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
@@ -39,6 +39,7 @@ class Task(db.Model):
     list_id = db.Column(db.Integer, db.ForeignKey("todo_list.id"))
     todo_list = db.relationship("TodoList", back_populates="tasks")
 db.create_all()
+
 
 class NewForm(FlaskForm):
     task = StringField("name", validators=[DataRequired()])
