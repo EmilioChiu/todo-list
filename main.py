@@ -38,7 +38,7 @@ class Task(db.Model):
     task = db.Column(db.String(150), nullable=False)
     list_id = db.Column(db.Integer, db.ForeignKey("todo_list.id"))
     todo_list = db.relationship("TodoList", back_populates="tasks")
-#db.create_all()
+db.create_all()
 
 class NewForm(FlaskForm):
     task = StringField("name", validators=[DataRequired()])
